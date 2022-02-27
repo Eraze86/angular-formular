@@ -1,17 +1,27 @@
 <form [formGroup]="animalsForm" (ngSubmit)="onSubmit()">
-    <label for="name">Namn:</label>
-    <input id="name" type="text" formControlName="name">
+    <label for="name">Namn:</label><br/>
+    <input id="name" type="text" formControlName="name"><br/><br/>
 
-    <label for="type">typ:</label>
-    <input id="type" type="text" formControlName="type">
+    <label for="type">typ:</label><br/>
+    <input id="type" type="text" formControlName="type"><br/><br/>
 
-    <label for="description">Beskrivning:</label>
-    <input id="description" type="text" formControlName="description">
-    <div *ngIf="animalsForm.get('name')?.invalid">Fälten namn och type är obligatoriska</div>
-    <button type="submit" [disabled]="!animalsForm.valid">Spara</button>
+    <label for="description">Beskrivning:</label><br/>
+    <input id="description" type="text" formControlName="description"><br/><br/>
 
+    <div *ngIf="animalsForm.get('name')?.invalid">Fälten namn och type är obligatoriska</div><br/>
+    <button type="submit" [disabled]="!animalsForm.valid">Spara</button><br/><br/>
+
+    <div formArrayName="nickName"><br/>
+        <button (click)="addNick()">Lägg till smeknamn</button><br/>
+
+    <div *ngFor="let nick in nicknames.controls; let i = index">
+        <label for="nickname">Smeknamn:</label><br/>
+        <input id="nickname" type="text" [formControl]="i"><br/>
+
+     </div>
+</div>
     <!-- <p>{{ animals.value | json }}</p> -->
 <p>{{animalsForm.status}}</p>
-
+<p> {{animalsForm.value}}</p>
 </form>
 
