@@ -1,0 +1,17 @@
+<form [formGroup]="animalsForm" (ngSubmit)="onSubmit()">
+    <label for="name">Namn:</label>
+    <input id="name" type="text" formControlName="name">
+
+    <label for="type">typ:</label>
+    <input id="type" type="text" formControlName="type">
+
+    <label for="description">Beskrivning:</label>
+    <input id="description" type="text" formControlName="description">
+    <div *ngIf="animalsForm.get('name')?.invalid">Fälten namn och type är obligatoriska</div>
+    <button type="submit" [disabled]="!animalsForm.valid">Spara</button>
+
+    <!-- <p>{{ animals.value | json }}</p> -->
+<p>{{animalsForm.status}}</p>
+
+</form>
+
